@@ -12,8 +12,9 @@ export type SliderProps = RN.ViewProps & {
   maximumValue?: number;
   minimumRange?: number;
   step?: number;
-  outboundColor?: RN.ColorValue;
-  inboundColor?: RN.ColorValue;
+  leftColor?: RN.ColorValue;
+  middleColor?: RN.ColorValue;
+  rightColor?: RN.ColorValue;
   thumbTintColor?: RN.ColorValue;
   thumbStyle?: RN.StyleProp<RN.ViewStyle>;
   trackStyle?: RN.StyleProp<RN.ViewStyle>;
@@ -51,8 +52,9 @@ const Slider = React.forwardRef<RN.View, SliderProps>((props: SliderProps, forwa
     maximumValue = 1,
     range: propValue = defaultValue,
     step = 0,
-    outboundColor = 'grey',
-    inboundColor = 'blue',
+    leftColor = 'grey',
+    middleColor = 'blue',
+    rightColor = 'grey',
     thumbTintColor = 'darkcyan',
     thumbStyle,
     trackStyle,
@@ -117,11 +119,11 @@ const Slider = React.forwardRef<RN.View, SliderProps>((props: SliderProps, forwa
       value={max} updateValue={updateMaxValue} onPress={onPress} onMove={onMove} onRelease={onRelease}
       enabled={enabled} vertical={vertical} inverted={inverted} {...others}
     >
-      <Track color={outboundColor} style={minStyle} length={minTrackPct * 100} vertical={vertical} thickness={trackHeight} />
+      <Track color={leftColor} style={minStyle} length={minTrackPct * 100} vertical={vertical} thickness={trackHeight} />
       {CustomThumb ? <CustomThumb {...thumbProps} value={min} thumb='min' /> : <Thumb {...thumbProps} />}
-      <Track color={inboundColor} style={midStyle} length={(maxTrackPct - minTrackPct) * 100} vertical={vertical} thickness={trackHeight} />
+      <Track color={middleColor} style={midStyle} length={(maxTrackPct - minTrackPct) * 100} vertical={vertical} thickness={trackHeight} />
       {CustomThumb ? <CustomThumb {...thumbProps} value={max} thumb='max' /> : <Thumb {...thumbProps} />}
-      <Track color={outboundColor} style={maxStyle} length={(1 - maxTrackPct) * 100} vertical={vertical} thickness={trackHeight} />
+      <Track color={rightColor} style={maxStyle} length={(1 - maxTrackPct) * 100} vertical={vertical} thickness={trackHeight} />
     </ResponderView>
   )
 })
