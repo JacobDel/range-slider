@@ -120,9 +120,9 @@ const Slider = React.forwardRef<RN.View, SliderProps>((props: SliderProps, forwa
       enabled={enabled} vertical={vertical} inverted={inverted} {...others}
     >
       <Track color={leftColor} style={minStyle} length={minTrackPct * 100} vertical={vertical} thickness={trackHeight} />
-      {CustomThumb ? <CustomThumb {...thumbProps} value={min} thumb='min' /> : <Thumb {...thumbProps} />}
+      {CustomThumb ? <CustomThumb {...thumbProps} value={min} thumb='min' /> : <Thumb {...thumbProps} color={leftColor} />}
       <Track color={middleColor} style={midStyle} length={(maxTrackPct - minTrackPct) * 100} vertical={vertical} thickness={trackHeight} />
-      {CustomThumb ? <CustomThumb {...thumbProps} value={max} thumb='max' /> : <Thumb {...thumbProps} />}
+      {CustomThumb ? <CustomThumb {...thumbProps} value={max} thumb='max' /> : <Thumb {...thumbProps} color={middleColor} />}
       <Track color={rightColor} style={maxStyle} length={(1 - maxTrackPct) * 100} vertical={vertical} thickness={trackHeight} />
     </ResponderView>
   )
